@@ -1,33 +1,13 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apac.catalyst.project.idp/v1alpha1
+kind: postgresql
 metadata:
-  name: dice-roller
-  labels:
-    'backstage.io/kubernetes-id': dice-roller
+  name: postgres-test-claim
+  namespace: crossplane-system
 spec:
-  selector:
-    matchLabels:
-      app: dice-roller
-  replicas: 5
-  template:
-    metadata:
-      labels:
-        app: dice-roller
-        'backstage.io/kubernetes-id': dice-roller
-    spec:
-      containers:
-        - name: nginx
-          image: nginx:1.14.2
-          args:
-            - bash
-            - -c
-            - yes > /dev/null & yes > /dev/null & yes > /dev/null
-          resources:
-            requests:
-              memory: '64Mi'
-              cpu: '50m'
-            limits:
-              memory: '128Mi'
-              cpu: '50m'
-          ports:
-            - containerPort: 80
+  parameters:
+    class: db.t2.small
+    region: us-east-1
+  compositionRef:
+    name: psql-aws-composition
+  writeConnectionSecretToRef:
+    name: postgres-test-claim-connection-secret
