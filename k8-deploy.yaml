@@ -41,7 +41,7 @@ spec:
                 secretKeyRef:
                   name: postgres-test-claim-connection-secret
                   key: username
-            - name: DB_PASS
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: postgres-test-claim-connection-secret
