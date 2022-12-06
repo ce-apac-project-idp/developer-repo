@@ -5,6 +5,7 @@ metadata:
   labels:
     app: user-sample-service
     tier: api
+    backstage.io/kubernetes-id: crossplane-rds
 spec:
   type: ClusterIP
   ports:
