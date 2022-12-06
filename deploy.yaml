@@ -3,6 +3,8 @@ kind: postgresql
 metadata:
   name: postgres-test-claim
   namespace: crossplane-system
+  labels:
+    backstage.io/kubernetes-id: crossplane-rds
 spec:
   parameters:
     class: db.t2.small
