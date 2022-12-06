@@ -1,7 +1,7 @@
 apiVersion: apac.catalyst.project.idp/v1alpha1
 kind: postgresql
 metadata:
-  name: postgres-claim
+  name: postgres-test-claim
   namespace: crossplane-system
 spec:
   parameters:
@@ -10,4 +10,4 @@ spec:
   compositionRef:
     name: psql-aws-composition
   writeConnectionSecretToRef:
-    name: postgres-claim-connection-secret
+    name: postgres-test-claim-connection-secret
