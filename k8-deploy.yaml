@@ -1,8 +1,49 @@
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
-  name: nginx-deployment-test
-  namespace: tekton
+  name: user-sample-service
   labels:
-    app: nginx
-    backstage.io/kubernetes-id: crossplane-rds
+    app: user-sample-service
+    backstage.io/kubernetes-id: crossplane-rds    
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-sample-service
+  template:
+    metadata:
+      labels:
+        app: user-sample-service
+    spec:
+      containers:
+        - name: idp-sample-user-service
+          image: quay.io/minnie0531/user-sample-service
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-test-claim-connection-secret
+                  key: endpoint
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-test-claim-connection-secret
+                  key: port
+            - name: DB_NAME
+              value: postgres
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-test-claim-connection-secret
+                  key: username
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-test-claim-connection-secret
+                  key: password
+          imagePullPolicy: Always
+      restartPolicy: Always
