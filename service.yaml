@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: user-sample-service
+  namespace: crossplane-system
   labels:
     app: user-sample-service
     tier: api

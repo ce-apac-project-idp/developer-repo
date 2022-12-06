@@ -3,6 +3,7 @@ kind: Route
 metadata:
   name: user-sample-service
   backstage.io/kubernetes-id: crossplane-rds
+  namespace: crossplane-system
 spec:
   path: /
   to:

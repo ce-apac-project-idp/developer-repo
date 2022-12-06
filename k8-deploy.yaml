@@ -2,6 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: user-sample-service
+  namespace: crossplane-system
   labels:
     app: user-sample-service
     backstage.io/kubernetes-id: crossplane-rds    
