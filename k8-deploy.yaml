@@ -15,6 +15,7 @@ spec:
     metadata:
       labels:
         app: user-service
+        backstage.io/kubernetes-id: crossplane-rds
     spec:
       containers:
         - name: idp-user-service
