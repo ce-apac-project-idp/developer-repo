@@ -1,7 +1,7 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: user--service
+  name: user-service
   namespace: crossplane-system
   labels:
     backstage.io/kubernetes-id: crossplane-rds
