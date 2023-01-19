@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: user-sample-service
+  namespace: crossplane-system
+  labels:
+    backstage.io/kubernetes-id: crossplane-rds
+spec:
+  path: /
+  to:
+    kind: Service
+    name: user-sample-service
+  port:
+    targetPort: http
