@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-app-react
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: react-http
+  selector:
+    app: demo-app-react

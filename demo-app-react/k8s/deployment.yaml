@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: demo-app-react
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-app-react
+  template:
+    metadata:
+      labels:
+        app: demo-app-react
+    spec:
+      containers:
+        - name: demo-app-react
+          ports:
+            - name: react-http
+              containerPort: 3000
+              protocol: TCP
+          image: image-registry.openshift-image-registry.svc:5000/backstage/demo-app-react:latest
