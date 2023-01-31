@@ -1,18 +1,20 @@
 FROM registry.redhat.io/rhel8/nodejs-18
 
-WORKDIR /opt/app
-COPY . .
+CMD ['/bin/bash', '-c', 'while true; do sleep 1; done;']
 
-USER 0
+# WORKDIR /opt/app
+# COPY . .
 
-RUN chgrp -R 0 /opt/app && \
-    chmod -R g=u /opt/app
+# USER 0
 
-USER 1001
-RUN fix-permissions ./
+# RUN chgrp -R 0 /opt/app && \
+#     chmod -R g=u /opt/app
 
-RUN npm install -g serve
-RUN npm install
-RUN npm run build
+# USER 1001
+# RUN fix-permissions ./
 
-CMD ["serve", "-s", "build", "-l", "3000"]
+# RUN npm install -g serve
+# RUN npm install
+# RUN npm run build
+
+# CMD ["serve", "-s", "build", "-l", "3000"]
