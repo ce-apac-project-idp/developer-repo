@@ -1,4 +1,4 @@
-FROM registry.redhat.io/rhel8/nodejs-18
+FROM node:16
 
 CMD ['/bin/bash', '-c', 'while true; do sleep 1; done;']
 
